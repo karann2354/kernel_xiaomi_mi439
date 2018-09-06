@@ -43,6 +43,7 @@ KBUILD_DEFCONFIG := defconfig
 
 # Check for binutils support for specific extensions
 lseinstr := $(call as-instr,.arch_extension lse,-DCONFIG_AS_LSE=1)
+KBUILD_CFLAGS += -mgeneral-regs-only $(lseinstr)
 
 ifeq ($(CONFIG_ARM64_LSE_ATOMICS), y)
   ifeq ($(lseinstr),)
